@@ -2,23 +2,7 @@ import React, { Component } from "react";
 import Searchbar from "./Searchbar";
 import ResultCard from "./ResultCard";
 import { Grommet } from "grommet";
-
-require("dotenv").config();
-
-const url = "http://api.openweathermap.org/data/2.5/weather?zip=";
-
-const getWeather = (zipCode: any, apiKey: any) => {
-  fetch(url + zipCode + ",us&id=524901&APPID=" + apiKey)
-    .then(response => {
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      // Do something for an error here
-    });
-};
+import { getWeather } from "./functions/getWeather";
 
 class App extends Component {
   constructor(props: any) {
@@ -27,10 +11,14 @@ class App extends Component {
     this.updateZipcode = this.updateZipcode.bind(this);
   }
 
-  componentDidMount() {
-    console.log(process.env);
+  componentDidMount(this: any) {
+    const url = process.env.REACT_APP_OW_API_URL;
     const apiKey = process.env.REACT_APP_OW_API_KEY;
-    getWeather(11210, apiKey);
+    getWeather(url, this.state.areaZip, apiKey);
+  }
+
+  componentDidUpdate(this: any) {
+    this.componentDidMount(this);
   }
 
   updateZipcode(event: any) {
