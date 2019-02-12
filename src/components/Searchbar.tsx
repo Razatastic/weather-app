@@ -1,13 +1,23 @@
 import React, { useState } from "react";
+import { Form, FormField, TextInput, Button } from "grommet";
+import { FormNextLink } from "grommet-icons";
 
-const Searchbar = () => {
-  // Declare a new state variable, which we'll call "count"
-  const [count, setCount] = useState(0);
+const Searchbar = (props: any) => {
+  // Declare a new state variable, which we'll call "input"
+  const [userInput, setInput] = useState("");
 
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+    <div className="bar-style">
+      <Form name="search" onSubmit={() => props.handleChange(userInput)}>
+        <FormField label="Where are you located?">
+          <TextInput
+            onChange={(e: any) => setInput(e.target.value)}
+            placeholder="Enter your zipcode"
+            value={userInput}
+          />
+        </FormField>
+        <Button type="submit" primary label="Submit" />
+      </Form>
     </div>
   );
 };
