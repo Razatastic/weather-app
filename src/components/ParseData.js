@@ -1,8 +1,10 @@
-export default class ParseData {
+class ParseData {
   constructor(data) {
-    this.location = data.location;
-    this.temperature = data.temperature;
-    this.humidity = data.humidity;
-    this.conditions = data.conditions;
+    this.city = data.name;
+    this.temperature = data.main.temp;
+    this.humidity = data.main.humidity;
+    this.conditions = data.weather.main;
+    this.conditionsDescription = data.weather.description;
   }
 }
+export default ParseData;

@@ -1,11 +1,26 @@
-import React, { useState } from "react";
-import { Box } from "grommet";
+import React, { Component } from "react";
+import "./styles/Card.css";
+import { Box, Heading } from "grommet";
 
-export default function ResultCard() {
-  const [val, setVal] = useState(0);
-  return (
-    <div className="card-container">
-      <div className="in" />
-    </div>
-  );
+class ResultCard extends Component {
+  render() {
+    const { weatherObj } = this.props;
+    const { city, humidity, temperature } = weatherObj;
+
+    return (
+      <Box
+        direction="row"
+        border={{ color: "brand", size: "large" }}
+        pad="medium"
+        style={{ backgroundColor: "white" }}
+        className="center-stuff"
+      >
+        <Heading size="large">{Math.floor(temperature)}°F</Heading>
+        <Heading size="small">Humidity: {Math.floor(humidity)}°F</Heading>
+        <Heading size="medium">{city}</Heading>
+      </Box>
+    );
+  }
 }
+
+export default ResultCard;

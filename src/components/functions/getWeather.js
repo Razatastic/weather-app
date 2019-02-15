@@ -1,13 +1,16 @@
 import ParseData from "../ParseData";
 
-export default function getWeather(url, zipCode, apiKey) {
+const url = process.env.REACT_APP_OW_API_URL;
+const apiKey = process.env.REACT_APP_OW_API_KEY;
+
+export default function getWeather(zipCode) {
   fetch(url + zipCode + apiKey)
     .then(response => {
       return response.json();
     })
     .then(data => {
-      console.log(data);
-      return new ParseData(data);
+      const weatherObj = new ParseData(data);
+      this.setState({ weatherObj });
     })
     .catch(err => {
       console.log(err);

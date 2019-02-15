@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { Form, FormField, TextInput, Button } from "grommet";
-import { FormNextLink } from "grommet-icons";
+import { Form, FormField, TextInput, Button, Box } from "grommet";
 
 const Searchbar = props => {
   // Declare a new state variable, which we'll call "input"
   const [userInput, setInput] = useState("");
 
   return (
-    <div className="bar-style">
+    <Box
+      direction="row"
+      border={{ color: "brand", size: "large" }}
+      pad="medium"
+      style={{ backgroundColor: "white" }}
+      className="center-stuff"
+    >
       <Form name="search" onSubmit={() => props.handleChange(userInput)}>
-        <FormField label="Where are you located?">
+        <FormField>
           <TextInput
             onChange={e => setInput(e.target.value)}
             placeholder="Enter your zipcode"
@@ -18,7 +23,7 @@ const Searchbar = props => {
         </FormField>
         <Button type="submit" primary label="Submit" />
       </Form>
-    </div>
+    </Box>
   );
 };
 
