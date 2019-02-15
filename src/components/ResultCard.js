@@ -16,7 +16,7 @@ class ResultCard extends Component {
         className="center-stuff"
       >
         <Heading size="large">{Math.floor(temperature)}°F</Heading>
-        <Heading size="small">Humidity: {Math.floor(humidity)}°F</Heading>
+        <Heading size="small">Humidity: {Math.floor(humidity)}%</Heading>
         <Heading size="medium">{city}</Heading>
       </Box>
     );

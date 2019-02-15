@@ -37,10 +37,9 @@ class App extends Component {
 
   render() {
     return (
-      <Grommet className="center">
-        <Grid rows={["small", "large"]} columns={["large"]} gap="large">
+      <Grommet className="absolute-center">
+        <Grid rows={["small", "large"]} columns={["medium"]} gap="medium">
           <Searchbar handleChange={this.updateZipcode} />
-
           <ResultCard weatherObj={this.state.weatherObj} />
         </Grid>
       </Grommet>
