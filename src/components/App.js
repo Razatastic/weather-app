@@ -9,7 +9,7 @@ const url = process.env.REACT_APP_OW_API_URL;
 const apiKey = process.env.REACT_APP_OW_API_KEY;
 
 const App = () => {
-  const [areaZip, setAreaZip] = useState("11230");
+  const [areaZip, setAreaZip] = useState("03217");
   const [weatherObj, setWeatherObj] = useState({});
 
   // This function is called after React DOM completely renders component - similar to ComponentDidMount()
@@ -25,7 +25,7 @@ const App = () => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  });
 
   const updateZipCode = event => {
     setAreaZip(event);

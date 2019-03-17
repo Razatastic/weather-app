@@ -1,16 +1,22 @@
 import React from "react";
 import { Box, Heading } from "grommet";
 
+const wrapperStyle = {
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column"
+};
+
 const ResultCard = props => {
   const { weatherObj } = props;
   const { city, humidity, temperature } = weatherObj;
   if (weatherObj !== {}) {
     return (
-      <Box direction="row" pad="small" className="box-style">
-        <Heading size="large">{Math.floor(temperature)}°F</Heading>
+      <div style={wrapperStyle}>
+        <Heading size="medium">{Math.floor(temperature)}°F</Heading>
         <Heading size="small">Humidity: {Math.floor(humidity)}%</Heading>
         <Heading size="medium">{city}</Heading>
-      </Box>
+      </div>
     );
   } else {
     // When API exceeds call limit
