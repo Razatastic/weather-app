@@ -1,17 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "src/components"
-		},
-		{
-			"path": "src/functions"
-		},
-		{
-			"path": "src/styles"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "src/components"
+    },
+    {
+      "path": "src/styles"
+    }
+  ],
+  "settings": {}
 }
