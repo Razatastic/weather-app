@@ -80,6 +80,7 @@ $RECYCLE.BIN/
 .env.test.local
 .env.production.local
 .env.*
+.env
 
 /build
 
