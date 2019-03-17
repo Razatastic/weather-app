@@ -1,50 +1,46 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Searchbar from "./Searchbar";
 import ResultCard from "./ResultCard";
-import { Grommet, Grid } from "grommet";
 import ParseData from "./ParseData";
-import "./styles/App.css";
+import { Grommet } from "grommet";
+import "../styles/App.css";
 
 const url = process.env.REACT_APP_OW_API_URL;
 const apiKey = process.env.REACT_APP_OW_API_KEY;
 
-class App extends Component {
-  state = { areaZip: "11230", weatherObj: {} };
-  updateZipcode = this.updateZipcode.bind(this);
-  getWeather = this.getWeather.bind(this);
+const App = () => {
+  const [areaZip, setAreaZip] = useState("11230");
+  const [weatherObj, setWeatherObj] = useState({});
 
-  componentDidMount = () => {
-    this.getWeather();
-  };
-
-  getWeather() {
-    fetch(url + this.state.areaZip + apiKey)
+  // This function is called after React DOM completely renders component - similar to ComponentDidMount()
+  useEffect(() => {
+    fetch(url + areaZip + apiKey)
       .then(response => {
         return response.json();
       })
       .then(data => {
         const weatherObj = new ParseData(data);
-        this.setState({ weatherObj });
+        setWeatherObj(weatherObj);
       })
       .catch(err => {
         console.log(err);
       });
-  }
+  });
 
-  updateZipcode(event) {
-    this.setState({ areaZip: event }, this.getWeather);
-  }
+  const updateZipCode = event => {
+    setAreaZip(event);
+  };
 
-  render() {
-    return (
-      <Grommet className="absolute-center">
-        <Grid rows={["small", "large"]} columns={["medium"]} gap="medium">
-          <Searchbar handleChange={this.updateZipcode} />
-          <ResultCard weatherObj={this.state.weatherObj} />
-        </Grid>
-      </Grommet>
-    );
-  }
-}
+  return (
+    <Grommet>
+      <div className="vertical-center">
+        <Searchbar handleChange={updateZipCode} />
+      </div>
+      <div className="vertical-center">
+        <ResultCard weatherObj={weatherObj} />
+      </div>
+    </Grommet>
+  );
+};
 
 export default App;
