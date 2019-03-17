@@ -25,7 +25,7 @@ const App = () => {
       .catch(err => {
         console.log(err);
       });
-  });
+  }, []);
 
   const updateZipCode = event => {
     setAreaZip(event);
