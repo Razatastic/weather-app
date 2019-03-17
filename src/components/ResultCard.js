@@ -4,7 +4,7 @@ import { Box, Heading } from "grommet";
 const ResultCard = props => {
   const { weatherObj } = props;
   const { city, humidity, temperature } = weatherObj;
-  if (weatherObj === {}) {
+  if (weatherObj !== {}) {
     return (
       <Box direction="row" pad="small" className="box-style">
         <Heading size="large">{Math.floor(temperature)}°F</Heading>
